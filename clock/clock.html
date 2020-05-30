@@ -1,0 +1,79 @@
+
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8"/>
+    <title>Clock</title>
+
+    <style>
+        body {
+          color: #000000;
+          background-color: #ffffff;
+        }
+
+        .page {
+          position: fixed;
+          width: 90%;
+          height: 90%;
+        }
+
+        .time_container,
+        .date_container {
+          width: 90%;
+          margin: -1%;
+          text-align: center;
+        }
+
+        .time_container {
+          top: 0;
+          height: 50%;
+        }
+
+        .time {
+          padding-top: 20px;
+          font-size: 12rem;
+	  font-weight: bold;
+        }
+
+        .date {
+          padding-top: 5px;
+          font-size: 5rem;
+	  font-weight: bold;
+        }
+    </style>
+</head>
+
+<body>
+    <div class="page" style="transform: rotate(90deg);-webkit-Transform: rotate(90deg);-moz-Transform: rotate(90deg);-ms-Transform: rotate(90deg);-o-Transform: rotate(90deg);">
+      <div class="time_container">
+          <div class="time" id="time">11:27</div>
+      </div>
+
+      <div class="date_container">
+          <div class="date" id="date">1月10日</div>
+          <div class="date" id="week">星期三</div>
+      </div>
+    </div>
+
+
+    <script>
+      function update() {
+        var date = new Date()
+        var utc8DiffMinutes = date.getTimezoneOffset() + 480
+        date.setMinutes(date.getMinutes() + utc8DiffMinutes)
+
+        var timeString = date.getHours() + ':' + ('0' + date.getMinutes()).slice(-2)
+        var dateString = (date.getMonth() + 1) + '月' + date.getDate() + '日'
+        var weekList = ['日', '一', '二', '三', '四', '五', '六']
+        var weekString = '星期' + weekList[date.getDay()]
+
+        document.getElementById("time").innerHTML = timeString
+        document.getElementById("date").innerHTML = dateString
+        document.getElementById("week").innerHTML = weekString
+      }
+
+      update()
+      setInterval("update()", 30 * 1000)
+    </script>
+</body>
+</html>
