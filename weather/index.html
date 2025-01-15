@@ -210,9 +210,9 @@
             setNightMode();
 
             var myDate = new Date();
-            myDate.setDate(myDate.getDate() - 40);
+            myDate.setDate(myDate.getDate() + 37);
             var myDateFixed = new Date();
-            myDateFixed.setDate(myDateFixed.getDate() - 41);
+            myDateFixed.setDate(myDateFixed.getDate() + 36);
             sun.innerHTML = momentWithCorrectUtcOffset(myDate).format("WW周") + "+" + myDateFixed.getDay()  + "&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<i class='wi wi-sunrise'></i>&nbsp;" +  sunrise.format(timeFormat)
                     + "&nbsp;&nbsp;&nbsp;<i class='wi wi-sunset'></i> " + sunset.format(timeFormat) + "&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;" + momentWithCorrectUtcOffset(new Date()).format("dddd") + " in " + momentWithCorrectUtcOffset(new Date()).format("第WW周");
 ;
